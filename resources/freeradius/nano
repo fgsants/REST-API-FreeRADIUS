@@ -1,0 +1,58 @@
+server default {
+
+listen {
+	type = auth
+	ipaddr = *
+	port = 0
+	limit {
+	      max_connections = 16
+	      lifetime = 0
+	      idle_timeout = 30
+	}
+}
+
+listen {
+	ipaddr = *
+	port = 0
+	type = acct
+	limit {
+	}
+}
+
+authorize {
+    rest
+		if (ok) {
+			update control {
+				Auth-Type := rest
+			}
+		}
+}
+
+authenticate {
+    Auth-Type rest {
+        rest {
+            updated = 1
+        }
+        if (updated) {
+            ok
+        }
+    }
+}
+
+preacct {
+	preprocess
+	acct_unique
+	suffix
+}
+
+accounting {
+	detail
+	rest
+}
+
+post-auth {
+	update {
+		&reply: += &session-state:
+	}
+}
+}

@@ -1,0 +1,26 @@
+{
+  "name": "rest-api-freeradius",
+  "version": "1.0.0",
+  "description": "\"A simple REST Server for the FreeRADIUS rlm_rest module.\"",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fgsants/REST-API-FreeRADIUS.git"
+  },
+  "author": "Fernandes Guimarães",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/fgsants/REST-API-FreeRADIUS/issues"
+  },
+  "homepage": "https://github.com/fgsants/REST-API-FreeRADIUS/#readme",
+  "devDependencies": { 
+      "nodemon": "^1.11.0",
+	"morgan": "^1.8.1"
+  },
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
