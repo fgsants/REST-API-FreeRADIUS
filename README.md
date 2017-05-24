@@ -56,3 +56,40 @@ cp resources/freeradius/radiusd.conf /usr/local/etc/raddb/radiusd.conf
 
 Start the API server with ```npm run start```.
 The API will be available at http://localhost:4000
+
+## The API in depth
+All details, addicional info, endpoints an how the API works are described below.
+
+### What can I do with it and how it works?
+This API enables you to create and manipulate users and access profiles that can be authenticated with FreeRADIUS. It verifies information provided by the radius server to decide if the user is authorized to authenticate and if it's the case, passes attributes to the server (like max download speed, etc...)
+
+This API comes ready to be used in a simple ISP scenario where you can add users and upload and download policies. But can be expanded to over much more simply by expanding the DB schema and authentication logic.
+
+It can also receive FreeRADIUS accounting logs and save it to MongoDB for later use ore analysis.
+
+
+### Endpoint
+The API has two main categories as enpoints:
+
+* Radius - *Used to communicate with the FreeRADIUS server.*
+* DB Manipulation - *Used to create, edit and remove entries in the database.*
+
+##### Radius endpoints
+
+```/check``` (GET) | Checks if the user exists in the DB, if true 'Authorize' in FreeRADIUS succeeds and sets Auth-Type to REST.
+
+```/auth``` (GET) | Checks if password is correcct and executes login logic. If ok, send attributes to FreeRadius and authenticates user.
+
+```/accounting``` (POST) | Receives accounting info from FreeRADIUS and logs it to DB.
+
+
+##### DB endpoints
+
+```/users``` (GET, POST) | GET: Lists all users in the DB | POST: Creates user
+
+```/users/:userID``` (PUT, DELETE) | Updates or removes user.
+	
+```/profiles``` (GET, POST) | GET: Lists all profiles in the DB | POST: Creates profile
+	
+```/profiles/:profileID``` (PUT, DELETE) | Updates or removes profile.
+
