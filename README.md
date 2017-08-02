@@ -15,11 +15,11 @@ apt-get install -y nodejs  mongodb-org git
 ```
 
 ##### FreeRADIUS
-Unfortunately it's very hard to find FreeRADIUS prebuild with the rlm_rest module, no apt-get here. But que can build it ourselfes with these steps:
+Unfortunately it's very hard to find FreeRADIUS prebuild with the rlm_rest module, no apt-get here. But we can build it ourselves with these steps:
 
 Install build dependencies with:
 ```
-apt-get install -y build-essential libssl-dev libcurl4-openssl-dev
+apt-get install -y build-essential libssl-dev libcurl4-openssl-dev libjson-c-dev
 ```
 
 Then download and build FreeRADIUS with:
