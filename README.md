@@ -7,7 +7,7 @@ This is a complete working API for the rlm_rest module that enables Freeradius t
 ## Installation
 
 #### Basics
-Basicly we need only node.js, mongoDB and FreeRadius. Install node.js, MongoDB and Git on Debian based distros with:
+Basicly we only need node.js, mongoDB and FreeRadius. Install node.js, MongoDB and Git on Debian based distros with:
 
 ```
 curl -sL https://deb.nodesource.com/setup_7.x | bash -
@@ -61,11 +61,11 @@ The API will be available at http://localhost:4000
 All details, addicional info, endpoints an how the API works are described below.
 
 ### What can I do with it and how it works?
-This API enables you to create and manipulate users and access profiles that can be authenticated with FreeRADIUS. It verifies information provided by the radius server to decide if the user is authorized to authenticate and if it's the case, passes attributes to the server (like max download speed, etc...)
+This API enables you to create and manipulate users and access profiles that can be authenticated with FreeRADIUS. It verifies information provided by the NAS to the radius server to decide if the user is authorized to authenticate and, if it's the case, passes attributes to the server (like max download speed, etc...).
 
-This API comes ready to be used in a simple ISP scenario where you can add users and upload and download policies. But can be expanded to over much more simply by expanding the DB schema and authentication logic.
+This API comes ready to be used in a simple ISP scenario where you can add users, upload and download speed policies. But can be expanded to cover much more by simply expanding the DB schema and authentication logic.
 
-It can also receive FreeRADIUS accounting logs and save it to MongoDB for later use ore analysis.
+It can also receive FreeRADIUS accounting logs and save it to MongoDB for later use and analysis.
 
 
 ### Endpoint
@@ -76,9 +76,9 @@ The API has two main categories as enpoints:
 
 ##### Radius endpoints
 
-```/check``` (GET) | Checks if the user exists in the DB, if true 'Authorize' in FreeRADIUS succeeds and sets Auth-Type to REST.
+```/check``` (GET) | Checks if the user exists in the DB, if true, 'Authorize' in FreeRADIUS succeeds and sets Auth-Type to REST.
 
-```/auth``` (GET) | Checks if password is correcct and executes login logic. If ok, send attributes to FreeRadius and authenticates user.
+```/auth``` (GET) | Checks if password is correcct and executes login logic. If ok, send attributes to FreeRadius and authenticates the user.
 
 ```/accounting``` (POST) | Receives accounting info from FreeRADIUS and logs it to DB.
 
@@ -94,4 +94,4 @@ The API has two main categories as enpoints:
 ```/profiles/:profileID``` (PUT, DELETE) | Updates or removes profile.
 
 ### Securing your setup
-This API dosn't have any security built in. If you'll use it somewhere please modify it to include som sort of authentication. The rlm_rest module also supports http auth enpoints, but for simplification reason I did't configured nonde. PLease read the [rest module config](https://github.com/FreeRADIUS/freeradius-server/blob/v3.0.x/raddb/mods-available/rest) on how to implement it. Also, please read the [MongoDB guidelines](https://docs.mongodb.com/manual/security) on how to secure it to.
+This API dosn't have any security built in. If you'll use it somewhere please modify it to include some sort of authentication. The rlm_rest module also supports http auth enpoints, but for simplification reasons I did't configured it. PLease read the [rest module config](https://github.com/FreeRADIUS/freeradius-server/blob/v3.0.x/raddb/mods-available/rest) on how to implement it. Also, please read the [MongoDB guidelines](https://docs.mongodb.com/manual/security) on how to secure it too.
