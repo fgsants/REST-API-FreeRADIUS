@@ -11,7 +11,7 @@ var express = require('express'),
 
   
 mongoose.Promise = global.Promise;
-mongoose.connect(config.database); 
+mongoose.connect(config.database, { useNewUrlParser: true } ); 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
