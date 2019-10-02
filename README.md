@@ -19,7 +19,7 @@ Unfortunately it's very hard to find FreeRADIUS prebuild with the rlm_rest modul
 
 Install build dependencies with:
 ```
-apt-get install -y build-essential libssl-dev libcurl4-openssl-dev libjson-c-dev
+apt-get install -y build-essential libssl-dev libcurl4-openssl-dev libjson-c-dev libtalloc-dev
 ```
 
 Then download and build FreeRADIUS with:
