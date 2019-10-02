@@ -9,9 +9,9 @@ var express = require('express'),
   Profiles = require('./api/models/profiles'),
   config = require('./config');
 
-  
+
 mongoose.Promise = global.Promise;
-mongoose.connect(config.database, { useNewUrlParser: true } ); 
+mongoose.connect(config.database, { useNewUrlParser: true, useUnifiedTopology: true } );
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -23,4 +23,4 @@ radius(app);
 
 app.listen(port);
 
-console.log('FreeRADIUS REST API Server started on: ' + port);
+console.log('FreeRADIUS REST API Server started on port: ' + port);
