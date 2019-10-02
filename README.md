@@ -94,4 +94,4 @@ The API has two main categories as enpoints:
 ```/profiles/:profileID``` (PUT, DELETE) | Updates or removes profile.
 
 ### Securing your setup
-This API dosn't have any security built in. If you'll use it somewhere please modify it to include some sort of authentication. The rlm_rest module also supports http auth enpoints, but for simplification reasons I did't configured it. PLease read the [rest module config](https://github.com/FreeRADIUS/freeradius-server/blob/v3.0.x/raddb/mods-available/rest) on how to implement it. Also, please read the [MongoDB guidelines](https://docs.mongodb.com/manual/security) on how to secure it too.
+This API dosn't have any security built in. If you'll use it somewhere please modify it to include some sort of authentication. The rlm_rest module also supports http auth enpoints, but for simplification reasons I did't configured it. PLease read the [rest module config](https://github.com/FreeRADIUS/freeradius-server/blob/v3.0.x/raddb/mods-available/rest) on how to implement it. Also, please read the [MongoDB security guidelines](https://docs.mongodb.com/manual/security) on how to secure it too.
